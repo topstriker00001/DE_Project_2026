@@ -1,0 +1,29 @@
+
+{
+  "team_number": "T0146",
+  "group_lead": {
+    "name": "Kartik Sharma",
+    "enrollment_no": "2501010638",
+    "github": "topstriker00001"
+  },
+  "members": [
+    {
+      "name": "Daksh Goyal",
+      "enrollment_no": "2501010128",
+      "github": "daksh7coder"
+    },
+    {
+      "name": "Yugraj Saini",
+      "enrollment_no": "2501010536",
+      "github": "Yugrajthecoder"
+    },
+    {
+      "name": "Rohan Pratap Singh",
+      "enrollment_no": "2501010383",
+      "github": "rohanpratapsingh21"
+    }
+  ],
+  "postgres_version": "15 or newer",
+  "laptop_used_for_benchmarks": "MacBook Pro M4"
+}
+
