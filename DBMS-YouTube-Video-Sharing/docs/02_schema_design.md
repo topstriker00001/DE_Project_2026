@@ -87,3 +87,29 @@ erDiagram
     WATCH_EVENTS ||--o{ AD_IMPRESSIONS : "shows"
     PLAYLISTS ||--o{ PLAYLIST_ITEMS : "contains"
     VIDEOS ||--o{ PLAYLIST_ITEMS : "included_in"
+```
+
+## 3. Functional Dependencies and Normal Forms
+The database is designed in **Third Normal Form (3NF) / BCNF**. Every non-key attribute depends strictly on the primary key, and there are no transitive dependencies.
+*   **users:** `user_id` → `premium_until`
+*   **channels:** `channel_id` → `user_id, handle, channel_name, country, is_verified, monetization_status, subscriber_count, created_at`
+*   **videos:** `video_id` → `channel_id, title, description, category, duration_sec, is_short, is_made_for_kids, visibility, view_count, uploaded_at, published_at`
+*   **subscriptions:** `{user_id, channel_id}` → `subscribed_at`
+*   **watch_events:** `watch_id` → `user_id, video_id, started_at, watch_seconds, device, traffic_source`
+*   **video_reactions:** `{user_id, video_id}` → `reaction, reacted_at`
+*   **comments:** `comment_id` → `video_id, user_id, parent_comment_id, body, is_pinned, like_count, created_at`
+*   **playlists:** `playlist_id` → `user_id, title, visibility, created_at`
+*   **playlist_items:** `{playlist_id, video_id}` → `position, added_at`
+*   **ad_impressions:** `impression_id` → `watch_id, ad_type, revenue_inr, shown_at`
+
+## 4. Data Problems Found & Resolved
+During the initial CSV loading phase (`\copy`), the following data integrity issues were discovered:
+1.  **Constraint Violation on Channels:** The `channels.csv` file contained a row (Pooja Kitchen, channel_id 18) where the `monetization_status` was set to `"SUSPENDED"`. The original schema only permitted `"ELIGIBLE"` and `"NOT_ELIGIBLE"`.
+2.  **Cascading Foreign Key Failures:** Because the `channels` row failed to insert, every subsequent file (`videos`, `subscriptions`, `comments`, etc.) that referenced `channel_id = 18` or its associated videos was rejected by PostgreSQL due to cascading Foreign Key constraint violations.
+3.  **Resolution:** Modified the `CHECK` constraint in `sql/01_schema.sql` to explicitly include `'SUSPENDED'`. Dropping and recreating the schema with this updated constraint allowed all 10 CSV files and their relational dependencies to load perfectly with zero errors.
+
+## 5. Integrity Check Results
+All logical checks returned 0 rows, confirming data integrity:
+1.  **Time-travel anomaly** (Watch event before video upload): 0 rows.
+2.  **Duplicate entry** (Same video in the same playlist twice): 0 rows.
+3.  **Privacy violation** (Private video with a published_at timestamp): 0 rows.
