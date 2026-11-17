@@ -1,0 +1,45 @@
+=== R15 run 1 ===
+Limit  (cost=1542.02..1542.03 rows=3 width=41) (actual time=2.032..2.032 rows=3.00 loops=1)
+  Buffers: shared hit=800
+  ->  Sort  (cost=1542.02..1542.03 rows=3 width=41) (actual time=2.031..2.032 rows=3.00 loops=1)
+        Sort Key: is_pinned DESC, like_count DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=800
+        ->  Seq Scan on comments  (cost=0.00..1542.00 rows=3 width=41) (actual time=0.052..2.020 rows=3.00 loops=1)
+              Filter: ((parent_comment_id IS NULL) AND ((video_id)::text = 'ZkNSlUB1EOs'::text))
+              Rows Removed by Filter: 59997
+              Buffers: shared hit=792
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.229 ms
+Execution Time: 2.048 ms
+=== R15 run 2 ===
+Limit  (cost=1542.02..1542.03 rows=3 width=41) (actual time=1.905..1.905 rows=3.00 loops=1)
+  Buffers: shared hit=800
+  ->  Sort  (cost=1542.02..1542.03 rows=3 width=41) (actual time=1.904..1.904 rows=3.00 loops=1)
+        Sort Key: is_pinned DESC, like_count DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=800
+        ->  Seq Scan on comments  (cost=0.00..1542.00 rows=3 width=41) (actual time=0.049..1.893 rows=3.00 loops=1)
+              Filter: ((parent_comment_id IS NULL) AND ((video_id)::text = 'ZkNSlUB1EOs'::text))
+              Rows Removed by Filter: 59997
+              Buffers: shared hit=792
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.200 ms
+Execution Time: 1.921 ms
+=== R15 run 3 ===
+Limit  (cost=1542.02..1542.03 rows=3 width=41) (actual time=1.867..1.868 rows=3.00 loops=1)
+  Buffers: shared hit=800
+  ->  Sort  (cost=1542.02..1542.03 rows=3 width=41) (actual time=1.867..1.867 rows=3.00 loops=1)
+        Sort Key: is_pinned DESC, like_count DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=800
+        ->  Seq Scan on comments  (cost=0.00..1542.00 rows=3 width=41) (actual time=0.049..1.855 rows=3.00 loops=1)
+              Filter: ((parent_comment_id IS NULL) AND ((video_id)::text = 'ZkNSlUB1EOs'::text))
+              Rows Removed by Filter: 59997
+              Buffers: shared hit=792
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.199 ms
+Execution Time: 1.883 ms

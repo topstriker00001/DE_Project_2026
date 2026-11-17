@@ -1,0 +1,90 @@
+=== R07 run 1 ===
+GroupAggregate  (cost=6594.71..6594.74 rows=1 width=44) (actual time=8.066..8.776 rows=7.00 loops=1)
+  Group Key: (date(w.started_at))
+  Buffers: shared hit=3533
+  ->  Sort  (cost=6594.71..6594.71 rows=1 width=8) (actual time=8.057..8.765 rows=8.00 loops=1)
+        Sort Key: (date(w.started_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=3533
+        ->  Gather  (cost=2040.11..6594.70 rows=1 width=8) (actual time=7.455..8.753 rows=8.00 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=3530
+              ->  Hash Join  (cost=1040.11..5594.60 rows=1 width=8) (actual time=6.846..7.185 rows=4.00 loops=2)
+                    Hash Cond: ((w.video_id)::text = (v.video_id)::text)
+                    Buffers: shared hit=3530
+                    ->  Parallel Seq Scan on watch_events w  (cost=0.00..4552.94 rows=588 width=24) (actual time=5.375..5.900 rows=5494.50 loops=2)
+                          Filter: ((date(started_at) >= '2026-06-01'::date) AND (date(started_at) <= '2026-06-30'::date))
+                          Rows Removed by Filter: 94506
+                          Buffers: shared hit=2200
+                    ->  Hash  (cost=1040.00..1040.00 rows=9 width=12) (actual time=1.150..1.150 rows=15.00 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1330
+                          ->  Seq Scan on videos v  (cost=0.00..1040.00 rows=9 width=12) (actual time=0.073..1.141 rows=15.00 loops=2)
+                                Filter: (channel_id = 217)
+                                Rows Removed by Filter: 29985
+                                Buffers: shared hit=1330
+Planning:
+  Buffers: shared hit=282
+Planning Time: 0.381 ms
+Execution Time: 8.819 ms
+=== R07 run 2 ===
+GroupAggregate  (cost=6594.71..6594.74 rows=1 width=44) (actual time=8.137..8.848 rows=7.00 loops=1)
+  Group Key: (date(w.started_at))
+  Buffers: shared hit=3533
+  ->  Sort  (cost=6594.71..6594.71 rows=1 width=8) (actual time=8.128..8.837 rows=8.00 loops=1)
+        Sort Key: (date(w.started_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=3533
+        ->  Gather  (cost=2040.11..6594.70 rows=1 width=8) (actual time=7.975..8.827 rows=8.00 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=3530
+              ->  Hash Join  (cost=1040.11..5594.60 rows=1 width=8) (actual time=7.009..7.326 rows=4.00 loops=2)
+                    Hash Cond: ((w.video_id)::text = (v.video_id)::text)
+                    Buffers: shared hit=3530
+                    ->  Parallel Seq Scan on watch_events w  (cost=0.00..4552.94 rows=588 width=24) (actual time=5.470..5.961 rows=5494.50 loops=2)
+                          Filter: ((date(started_at) >= '2026-06-01'::date) AND (date(started_at) <= '2026-06-30'::date))
+                          Rows Removed by Filter: 94506
+                          Buffers: shared hit=2200
+                    ->  Hash  (cost=1040.00..1040.00 rows=9 width=12) (actual time=1.239..1.239 rows=15.00 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1330
+                          ->  Seq Scan on videos v  (cost=0.00..1040.00 rows=9 width=12) (actual time=0.079..1.232 rows=15.00 loops=2)
+                                Filter: (channel_id = 217)
+                                Rows Removed by Filter: 29985
+                                Buffers: shared hit=1330
+Planning:
+  Buffers: shared hit=282
+Planning Time: 0.347 ms
+Execution Time: 8.888 ms
+=== R07 run 3 ===
+GroupAggregate  (cost=6594.71..6594.74 rows=1 width=44) (actual time=7.652..8.336 rows=7.00 loops=1)
+  Group Key: (date(w.started_at))
+  Buffers: shared hit=3533
+  ->  Sort  (cost=6594.71..6594.71 rows=1 width=8) (actual time=7.644..8.326 rows=8.00 loops=1)
+        Sort Key: (date(w.started_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=3533
+        ->  Gather  (cost=2040.11..6594.70 rows=1 width=8) (actual time=7.091..8.314 rows=8.00 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=3530
+              ->  Hash Join  (cost=1040.11..5594.60 rows=1 width=8) (actual time=6.515..6.831 rows=4.00 loops=2)
+                    Hash Cond: ((w.video_id)::text = (v.video_id)::text)
+                    Buffers: shared hit=3530
+                    ->  Parallel Seq Scan on watch_events w  (cost=0.00..4552.94 rows=588 width=24) (actual time=5.091..5.581 rows=5494.50 loops=2)
+                          Filter: ((date(started_at) >= '2026-06-01'::date) AND (date(started_at) <= '2026-06-30'::date))
+                          Rows Removed by Filter: 94506
+                          Buffers: shared hit=2200
+                    ->  Hash  (cost=1040.00..1040.00 rows=9 width=12) (actual time=1.126..1.126 rows=15.00 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                          Buffers: shared hit=1330
+                          ->  Seq Scan on videos v  (cost=0.00..1040.00 rows=9 width=12) (actual time=0.063..1.123 rows=15.00 loops=2)
+                                Filter: (channel_id = 217)
+                                Rows Removed by Filter: 29985
+                                Buffers: shared hit=1330
+Planning:
+  Buffers: shared hit=282
+Planning Time: 0.390 ms
+Execution Time: 8.377 ms

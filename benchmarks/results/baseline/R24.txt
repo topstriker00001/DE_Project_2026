@@ -1,0 +1,48 @@
+=== R24 run 1 ===
+GroupAggregate  (cost=2640.58..2641.24 rows=33 width=16) (actual time=2.694..2.700 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=1027
+  ->  Sort  (cost=2640.58..2640.66 rows=33 width=8) (actual time=2.691..2.693 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=1027
+        ->  Seq Scan on subscriptions  (cost=0.00..2639.75 rows=33 width=8) (actual time=0.012..2.677 rows=88.00 loops=1)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 129165
+              Buffers: shared hit=1024
+Planning:
+  Buffers: shared hit=103
+Planning Time: 0.185 ms
+Execution Time: 2.732 ms
+=== R24 run 2 ===
+GroupAggregate  (cost=2640.58..2641.24 rows=33 width=16) (actual time=2.647..2.654 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=1027
+  ->  Sort  (cost=2640.58..2640.66 rows=33 width=8) (actual time=2.645..2.646 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=1027
+        ->  Seq Scan on subscriptions  (cost=0.00..2639.75 rows=33 width=8) (actual time=0.012..2.632 rows=88.00 loops=1)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 129165
+              Buffers: shared hit=1024
+Planning:
+  Buffers: shared hit=103
+Planning Time: 0.170 ms
+Execution Time: 2.686 ms
+=== R24 run 3 ===
+GroupAggregate  (cost=2640.58..2641.24 rows=33 width=16) (actual time=2.723..2.730 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=1027
+  ->  Sort  (cost=2640.58..2640.66 rows=33 width=8) (actual time=2.719..2.721 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=1027
+        ->  Seq Scan on subscriptions  (cost=0.00..2639.75 rows=33 width=8) (actual time=0.011..2.705 rows=88.00 loops=1)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 129165
+              Buffers: shared hit=1024
+Planning:
+  Buffers: shared hit=103
+Planning Time: 0.173 ms
+Execution Time: 2.763 ms

@@ -43,7 +43,7 @@ CREATE TABLE videos (
     category VARCHAR(100) NOT NULL,
     duration_sec INTEGER NOT NULL,
     is_short BOOLEAN NOT NULL,
-    is_made_for_kids BOOLEAN NOT NULL,
+    is_made_for_kids BOOLEAN,
     visibility VARCHAR(50) NOT NULL,
     uploaded_at TIMESTAMP WITH TIME ZONE NOT NULL,
     published_at TIMESTAMP WITH TIME ZONE,

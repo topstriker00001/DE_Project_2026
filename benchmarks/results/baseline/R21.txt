@@ -1,0 +1,45 @@
+=== R21 run 1 ===
+Nested Loop  (cost=0.58..77.05 rows=7 width=44) (actual time=0.016..0.047 rows=11.00 loops=1)
+  Buffers: shared hit=39
+  ->  Index Scan using playlist_items_pkey on playlist_items pi  (cost=0.29..18.91 rows=7 width=16) (actual time=0.010..0.011 rows=11.00 loops=1)
+        Index Cond: (playlist_id = 501)
+        Index Searches: 1
+        Buffers: shared hit=6
+  ->  Index Scan using videos_pkey on videos v  (cost=0.29..8.30 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=11)
+        Index Cond: ((video_id)::text = (pi.video_id)::text)
+        Index Searches: 11
+        Buffers: shared hit=33
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.431 ms
+Execution Time: 0.076 ms
+=== R21 run 2 ===
+Nested Loop  (cost=0.58..77.05 rows=7 width=44) (actual time=0.015..0.045 rows=11.00 loops=1)
+  Buffers: shared hit=39
+  ->  Index Scan using playlist_items_pkey on playlist_items pi  (cost=0.29..18.91 rows=7 width=16) (actual time=0.010..0.011 rows=11.00 loops=1)
+        Index Cond: (playlist_id = 501)
+        Index Searches: 1
+        Buffers: shared hit=6
+  ->  Index Scan using videos_pkey on videos v  (cost=0.29..8.30 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=11)
+        Index Cond: ((video_id)::text = (pi.video_id)::text)
+        Index Searches: 11
+        Buffers: shared hit=33
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.377 ms
+Execution Time: 0.071 ms
+=== R21 run 3 ===
+Nested Loop  (cost=0.58..77.05 rows=7 width=44) (actual time=0.016..0.044 rows=11.00 loops=1)
+  Buffers: shared hit=39
+  ->  Index Scan using playlist_items_pkey on playlist_items pi  (cost=0.29..18.91 rows=7 width=16) (actual time=0.010..0.011 rows=11.00 loops=1)
+        Index Cond: (playlist_id = 501)
+        Index Searches: 1
+        Buffers: shared hit=6
+  ->  Index Scan using videos_pkey on videos v  (cost=0.29..8.30 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=11)
+        Index Cond: ((video_id)::text = (pi.video_id)::text)
+        Index Searches: 11
+        Buffers: shared hit=33
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.355 ms
+Execution Time: 0.068 ms

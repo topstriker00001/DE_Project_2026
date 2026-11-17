@@ -1,0 +1,39 @@
+=== R23 run 1 ===
+Limit  (cost=6229.16..6229.23 rows=25 width=56) (actual time=12.125..12.127 rows=25.00 loops=1)
+  Buffers: shared hit=795, temp read=468 written=551
+  ->  Sort  (cost=6154.16..6304.16 rows=60000 width=56) (actual time=10.689..11.627 rows=30025.00 loops=1)
+        Sort Key: created_at DESC
+        Sort Method: external merge  Disk: 4392kB
+        Buffers: shared hit=795, temp read=468 written=551
+        ->  Seq Scan on comments  (cost=0.00..1392.00 rows=60000 width=56) (actual time=0.005..2.971 rows=60000.00 loops=1)
+              Buffers: shared hit=792
+Planning:
+  Buffers: shared hit=119
+Planning Time: 0.226 ms
+Execution Time: 12.960 ms
+=== R23 run 2 ===
+Limit  (cost=6229.16..6229.23 rows=25 width=56) (actual time=12.058..12.060 rows=25.00 loops=1)
+  Buffers: shared hit=795, temp read=468 written=551
+  ->  Sort  (cost=6154.16..6304.16 rows=60000 width=56) (actual time=10.620..11.589 rows=30025.00 loops=1)
+        Sort Key: created_at DESC
+        Sort Method: external merge  Disk: 4392kB
+        Buffers: shared hit=795, temp read=468 written=551
+        ->  Seq Scan on comments  (cost=0.00..1392.00 rows=60000 width=56) (actual time=0.005..2.791 rows=60000.00 loops=1)
+              Buffers: shared hit=792
+Planning:
+  Buffers: shared hit=119
+Planning Time: 0.179 ms
+Execution Time: 12.873 ms
+=== R23 run 3 ===
+Limit  (cost=6229.16..6229.23 rows=25 width=56) (actual time=12.087..12.088 rows=25.00 loops=1)
+  Buffers: shared hit=795, temp read=468 written=551
+  ->  Sort  (cost=6154.16..6304.16 rows=60000 width=56) (actual time=10.595..11.600 rows=30025.00 loops=1)
+        Sort Key: created_at DESC
+        Sort Method: external merge  Disk: 4392kB
+        Buffers: shared hit=795, temp read=468 written=551
+        ->  Seq Scan on comments  (cost=0.00..1392.00 rows=60000 width=56) (actual time=0.004..2.779 rows=60000.00 loops=1)
+              Buffers: shared hit=792
+Planning:
+  Buffers: shared hit=119
+Planning Time: 0.177 ms
+Execution Time: 12.889 ms
