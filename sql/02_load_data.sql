@@ -12,3 +12,4 @@ SET search_path TO youtube;
 \copy ad_impressions FROM 'seed_data/ad_impressions.csv' WITH (FORMAT csv, HEADER true);
 
 ANALYZE;
+
