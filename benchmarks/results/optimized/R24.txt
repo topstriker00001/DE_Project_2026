@@ -1,0 +1,85 @@
+=== R24 run 1 ===
+GroupAggregate  (cost=9.91..10.57 rows=33 width=16) (actual time=0.270..0.276 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=10
+  ->  Sort  (cost=9.91..9.99 rows=33 width=8) (actual time=0.267..0.269 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=10
+        ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions  (cost=0.42..9.08 rows=33 width=8) (actual time=0.249..0.256 rows=88.00 loops=1)
+              Index Cond: (channel_id = 217)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=127
+Planning Time: 0.206 ms
+Execution Time: 0.311 ms
+=== R24 run 2 ===
+GroupAggregate  (cost=9.91..10.57 rows=33 width=16) (actual time=0.054..0.060 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=10
+  ->  Sort  (cost=9.91..9.99 rows=33 width=8) (actual time=0.052..0.053 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=10
+        ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions  (cost=0.42..9.08 rows=33 width=8) (actual time=0.035..0.041 rows=88.00 loops=1)
+              Index Cond: (channel_id = 217)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=127
+Planning Time: 0.205 ms
+Execution Time: 0.094 ms
+=== R24 run 3 ===
+GroupAggregate  (cost=9.91..10.57 rows=33 width=16) (actual time=0.048..0.054 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=10
+  ->  Sort  (cost=9.91..9.99 rows=33 width=8) (actual time=0.045..0.047 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=10
+        ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions  (cost=0.42..9.08 rows=33 width=8) (actual time=0.027..0.034 rows=88.00 loops=1)
+              Index Cond: (channel_id = 217)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=127
+Planning Time: 0.197 ms
+Execution Time: 0.086 ms
+=== R24 run 4 ===
+GroupAggregate  (cost=9.91..10.57 rows=33 width=16) (actual time=0.045..0.051 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=10
+  ->  Sort  (cost=9.91..9.99 rows=33 width=8) (actual time=0.043..0.044 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=10
+        ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions  (cost=0.42..9.08 rows=33 width=8) (actual time=0.026..0.033 rows=88.00 loops=1)
+              Index Cond: (channel_id = 217)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=127
+Planning Time: 0.188 ms
+Execution Time: 0.082 ms
+=== R24 run 5 ===
+GroupAggregate  (cost=9.91..10.57 rows=33 width=16) (actual time=0.048..0.054 rows=37.00 loops=1)
+  Group Key: (date_trunc('month'::text, subscribed_at))
+  Buffers: shared hit=10
+  ->  Sort  (cost=9.91..9.99 rows=33 width=8) (actual time=0.046..0.047 rows=88.00 loops=1)
+        Sort Key: (date_trunc('month'::text, subscribed_at))
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=10
+        ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions  (cost=0.42..9.08 rows=33 width=8) (actual time=0.025..0.032 rows=88.00 loops=1)
+              Index Cond: (channel_id = 217)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=127
+Planning Time: 0.181 ms
+Execution Time: 0.084 ms

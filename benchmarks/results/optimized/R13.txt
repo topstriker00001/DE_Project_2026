@@ -1,0 +1,125 @@
+=== R13 run 1 ===
+Nested Loop Anti Join  (cost=1.12..230.87 rows=33 width=16) (actual time=0.047..1.150 rows=88.00 loops=1)
+  Buffers: shared hit=1543 read=94
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.42..9.00 rows=33 width=16) (actual time=0.021..0.024 rows=88.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=5 read=2
+  ->  Nested Loop  (cost=0.71..6.71 rows=1 width=8) (actual time=0.013..0.013 rows=0.00 loops=88)
+        Buffers: shared hit=1538 read=92
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.42..4.77 rows=6 width=20) (actual time=0.005..0.005 rows=5.16 loops=88)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 88
+              Buffers: shared hit=176 read=92
+        ->  Index Scan using videos_pkey on videos v  (cost=0.29..0.32 rows=1 width=12) (actual time=0.001..0.001 rows=0.00 loops=454)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 454
+              Buffers: shared hit=1362
+Planning:
+  Buffers: shared hit=608
+Planning Time: 0.822 ms
+Execution Time: 1.185 ms
+=== R13 run 2 ===
+Nested Loop Anti Join  (cost=1.12..230.87 rows=33 width=16) (actual time=0.032..0.831 rows=88.00 loops=1)
+  Buffers: shared hit=1637
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.42..9.00 rows=33 width=16) (actual time=0.010..0.012 rows=88.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=7
+  ->  Nested Loop  (cost=0.71..6.71 rows=1 width=8) (actual time=0.009..0.009 rows=0.00 loops=88)
+        Buffers: shared hit=1630
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.42..4.77 rows=6 width=20) (actual time=0.001..0.002 rows=5.16 loops=88)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 88
+              Buffers: shared hit=268
+        ->  Index Scan using videos_pkey on videos v  (cost=0.29..0.32 rows=1 width=12) (actual time=0.001..0.001 rows=0.00 loops=454)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 454
+              Buffers: shared hit=1362
+Planning:
+  Buffers: shared hit=608
+Planning Time: 0.725 ms
+Execution Time: 0.862 ms
+=== R13 run 3 ===
+Nested Loop Anti Join  (cost=1.12..230.87 rows=33 width=16) (actual time=0.030..0.801 rows=88.00 loops=1)
+  Buffers: shared hit=1637
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.42..9.00 rows=33 width=16) (actual time=0.009..0.011 rows=88.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=7
+  ->  Nested Loop  (cost=0.71..6.71 rows=1 width=8) (actual time=0.009..0.009 rows=0.00 loops=88)
+        Buffers: shared hit=1630
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.42..4.77 rows=6 width=20) (actual time=0.001..0.001 rows=5.16 loops=88)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 88
+              Buffers: shared hit=268
+        ->  Index Scan using videos_pkey on videos v  (cost=0.29..0.32 rows=1 width=12) (actual time=0.001..0.001 rows=0.00 loops=454)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 454
+              Buffers: shared hit=1362
+Planning:
+  Buffers: shared hit=608
+Planning Time: 0.724 ms
+Execution Time: 0.831 ms
+=== R13 run 4 ===
+Nested Loop Anti Join  (cost=1.12..230.87 rows=33 width=16) (actual time=0.031..0.817 rows=88.00 loops=1)
+  Buffers: shared hit=1637
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.42..9.00 rows=33 width=16) (actual time=0.010..0.012 rows=88.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=7
+  ->  Nested Loop  (cost=0.71..6.71 rows=1 width=8) (actual time=0.009..0.009 rows=0.00 loops=88)
+        Buffers: shared hit=1630
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.42..4.77 rows=6 width=20) (actual time=0.001..0.001 rows=5.16 loops=88)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 88
+              Buffers: shared hit=268
+        ->  Index Scan using videos_pkey on videos v  (cost=0.29..0.32 rows=1 width=12) (actual time=0.001..0.001 rows=0.00 loops=454)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 454
+              Buffers: shared hit=1362
+Planning:
+  Buffers: shared hit=608
+Planning Time: 0.765 ms
+Execution Time: 0.850 ms
+=== R13 run 5 ===
+Nested Loop Anti Join  (cost=1.12..230.87 rows=33 width=16) (actual time=0.030..0.798 rows=88.00 loops=1)
+  Buffers: shared hit=1637
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.42..9.00 rows=33 width=16) (actual time=0.009..0.011 rows=88.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=7
+  ->  Nested Loop  (cost=0.71..6.71 rows=1 width=8) (actual time=0.009..0.009 rows=0.00 loops=88)
+        Buffers: shared hit=1630
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.42..4.77 rows=6 width=20) (actual time=0.001..0.001 rows=5.16 loops=88)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 88
+              Buffers: shared hit=268
+        ->  Index Scan using videos_pkey on videos v  (cost=0.29..0.32 rows=1 width=12) (actual time=0.001..0.001 rows=0.00 loops=454)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 454
+              Buffers: shared hit=1362
+Planning:
+  Buffers: shared hit=608
+Planning Time: 0.707 ms
+Execution Time: 0.829 ms

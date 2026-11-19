@@ -1,0 +1,90 @@
+=== R08 run 1 ===
+Sort  (cost=8.72..8.73 rows=4 width=49) (actual time=0.046..0.046 rows=5.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  HashAggregate  (cost=8.62..8.68 rows=4 width=49) (actual time=0.035..0.036 rows=5.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=4
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.42..8.56 rows=8 width=13) (actual time=0.022..0.023 rows=14.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=222
+Planning Time: 0.295 ms
+Execution Time: 0.085 ms
+=== R08 run 2 ===
+Sort  (cost=8.72..8.73 rows=4 width=49) (actual time=0.049..0.049 rows=5.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  HashAggregate  (cost=8.62..8.68 rows=4 width=49) (actual time=0.039..0.040 rows=5.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=4
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.42..8.56 rows=8 width=13) (actual time=0.026..0.026 rows=14.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=222
+Planning Time: 0.314 ms
+Execution Time: 0.086 ms
+=== R08 run 3 ===
+Sort  (cost=8.72..8.73 rows=4 width=49) (actual time=0.049..0.049 rows=5.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  HashAggregate  (cost=8.62..8.68 rows=4 width=49) (actual time=0.039..0.040 rows=5.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=4
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.42..8.56 rows=8 width=13) (actual time=0.026..0.026 rows=14.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=222
+Planning Time: 0.301 ms
+Execution Time: 0.086 ms
+=== R08 run 4 ===
+Sort  (cost=8.72..8.73 rows=4 width=49) (actual time=0.046..0.046 rows=5.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  HashAggregate  (cost=8.62..8.68 rows=4 width=49) (actual time=0.036..0.037 rows=5.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=4
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.42..8.56 rows=8 width=13) (actual time=0.020..0.021 rows=14.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=222
+Planning Time: 0.271 ms
+Execution Time: 0.083 ms
+=== R08 run 5 ===
+Sort  (cost=8.72..8.73 rows=4 width=49) (actual time=0.046..0.046 rows=5.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  HashAggregate  (cost=8.62..8.68 rows=4 width=49) (actual time=0.035..0.036 rows=5.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=4
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.42..8.56 rows=8 width=13) (actual time=0.022..0.022 rows=14.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=222
+Planning Time: 0.278 ms
+Execution Time: 0.081 ms
