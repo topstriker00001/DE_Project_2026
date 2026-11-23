@@ -1,0 +1,21 @@
+=== W01 run 1 ===
+Insert on videos  (cost=0.00..0.01 rows=0 width=0) (actual time=1.053..1.053 rows=0.00 loops=1)
+  Buffers: shared hit=198 read=17 dirtied=8 written=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=962) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.046 ms
+Trigger for constraint videos_channel_id_fkey: time=0.335 calls=1
+Execution Time: 1.402 ms
+=== W01 run 2 ===
+Insert on videos  (cost=0.00..0.01 rows=0 width=0) (actual time=0.763..0.764 rows=0.00 loops=1)
+  Buffers: shared hit=216 read=1 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=962) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.042 ms
+Trigger for constraint videos_channel_id_fkey: time=0.296 calls=1
+Execution Time: 1.073 ms
+=== W01 run 3 ===
+Insert on videos  (cost=0.00..0.01 rows=0 width=0) (actual time=0.664..0.664 rows=0.00 loops=1)
+  Buffers: shared hit=216 read=1 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=962) (actual time=0.001..0.002 rows=1.00 loops=1)
+Planning Time: 0.036 ms
+Trigger for constraint videos_channel_id_fkey: time=0.337 calls=1
+Execution Time: 1.013 ms

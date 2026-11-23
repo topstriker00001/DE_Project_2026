@@ -1,0 +1,33 @@
+=== R15 run 1 ===
+Limit  (cost=0.43..16.48 rows=3 width=41) (actual time=0.013..0.021 rows=4.00 loops=1)
+  Buffers: shared read=7
+  ->  Index Scan using idx_comments_video_top_level on comments  (cost=0.43..16.48 rows=3 width=41) (actual time=0.013..0.020 rows=4.00 loops=1)
+        Index Cond: ((video_id)::text = 'ZkNSlUB1EOs'::text)
+        Index Searches: 1
+        Buffers: shared read=7
+Planning:
+  Buffers: shared hit=188 read=6
+Planning Time: 0.316 ms
+Execution Time: 0.028 ms
+=== R15 run 2 ===
+Limit  (cost=0.43..16.48 rows=3 width=41) (actual time=0.014..0.021 rows=4.00 loops=1)
+  Buffers: shared hit=7
+  ->  Index Scan using idx_comments_video_top_level on comments  (cost=0.43..16.48 rows=3 width=41) (actual time=0.013..0.019 rows=4.00 loops=1)
+        Index Cond: ((video_id)::text = 'ZkNSlUB1EOs'::text)
+        Index Searches: 1
+        Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=194
+Planning Time: 0.881 ms
+Execution Time: 0.041 ms
+=== R15 run 3 ===
+Limit  (cost=0.43..16.48 rows=3 width=41) (actual time=0.033..0.042 rows=4.00 loops=1)
+  Buffers: shared hit=7
+  ->  Index Scan using idx_comments_video_top_level on comments  (cost=0.43..16.48 rows=3 width=41) (actual time=0.032..0.040 rows=4.00 loops=1)
+        Index Cond: ((video_id)::text = 'ZkNSlUB1EOs'::text)
+        Index Searches: 1
+        Buffers: shared hit=7
+Planning:
+  Buffers: shared hit=194
+Planning Time: 0.864 ms
+Execution Time: 0.066 ms

@@ -1,0 +1,24 @@
+=== W02 run 1 ===
+Insert on watch_events  (cost=0.00..0.01 rows=0 width=0) (actual time=0.214..0.214 rows=0.00 loops=1)
+  Buffers: shared hit=119 read=7 dirtied=6
+  ->  Result  (cost=0.00..0.01 rows=1 width=304) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.034 ms
+Trigger for constraint watch_events_user_id_fkey: time=0.546 calls=1
+Trigger for constraint watch_events_video_id_fkey: time=0.327 calls=1
+Execution Time: 1.096 ms
+=== W02 run 2 ===
+Insert on watch_events  (cost=0.00..0.01 rows=0 width=0) (actual time=0.129..0.129 rows=0.00 loops=1)
+  Buffers: shared hit=126
+  ->  Result  (cost=0.00..0.01 rows=1 width=304) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.035 ms
+Trigger for constraint watch_events_user_id_fkey: time=0.317 calls=1
+Trigger for constraint watch_events_video_id_fkey: time=0.754 calls=1
+Execution Time: 1.211 ms
+=== W02 run 3 ===
+Insert on watch_events  (cost=0.00..0.01 rows=0 width=0) (actual time=0.573..0.574 rows=0.00 loops=1)
+  Buffers: shared hit=126
+  ->  Result  (cost=0.00..0.01 rows=1 width=304) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning Time: 0.108 ms
+Trigger for constraint watch_events_user_id_fkey: time=1.119 calls=1
+Trigger for constraint watch_events_video_id_fkey: time=1.174 calls=1
+Execution Time: 2.899 ms

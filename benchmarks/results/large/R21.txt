@@ -1,0 +1,45 @@
+=== R21 run 1 ===
+Nested Loop  (cost=0.85..88.36 rows=8 width=44) (actual time=0.408..0.480 rows=11.00 loops=1)
+  Buffers: shared hit=18 read=33
+  ->  Index Scan using playlist_items_pkey on playlist_items pi  (cost=0.43..20.82 rows=8 width=16) (actual time=0.397..0.398 rows=11.00 loops=1)
+        Index Cond: (playlist_id = 501)
+        Index Searches: 1
+        Buffers: shared hit=3 read=4
+  ->  Index Scan using videos_pkey on videos v  (cost=0.42..8.44 rows=1 width=40) (actual time=0.007..0.007 rows=1.00 loops=11)
+        Index Cond: ((video_id)::text = (pi.video_id)::text)
+        Index Searches: 11
+        Buffers: shared hit=15 read=29
+Planning:
+  Buffers: shared hit=404 read=3
+Planning Time: 0.624 ms
+Execution Time: 0.500 ms
+=== R21 run 2 ===
+Nested Loop  (cost=0.85..88.36 rows=8 width=44) (actual time=0.019..0.059 rows=11.00 loops=1)
+  Buffers: shared hit=51
+  ->  Index Scan using playlist_items_pkey on playlist_items pi  (cost=0.43..20.82 rows=8 width=16) (actual time=0.012..0.013 rows=11.00 loops=1)
+        Index Cond: (playlist_id = 501)
+        Index Searches: 1
+        Buffers: shared hit=7
+  ->  Index Scan using videos_pkey on videos v  (cost=0.42..8.44 rows=1 width=40) (actual time=0.004..0.004 rows=1.00 loops=11)
+        Index Cond: ((video_id)::text = (pi.video_id)::text)
+        Index Searches: 11
+        Buffers: shared hit=44
+Planning:
+  Buffers: shared hit=407
+Planning Time: 0.597 ms
+Execution Time: 0.081 ms
+=== R21 run 3 ===
+Nested Loop  (cost=0.85..88.36 rows=8 width=44) (actual time=0.020..0.062 rows=11.00 loops=1)
+  Buffers: shared hit=51
+  ->  Index Scan using playlist_items_pkey on playlist_items pi  (cost=0.43..20.82 rows=8 width=16) (actual time=0.013..0.014 rows=11.00 loops=1)
+        Index Cond: (playlist_id = 501)
+        Index Searches: 1
+        Buffers: shared hit=7
+  ->  Index Scan using videos_pkey on videos v  (cost=0.42..8.44 rows=1 width=40) (actual time=0.004..0.004 rows=1.00 loops=11)
+        Index Cond: ((video_id)::text = (pi.video_id)::text)
+        Index Searches: 11
+        Buffers: shared hit=44
+Planning:
+  Buffers: shared hit=407
+Planning Time: 0.618 ms
+Execution Time: 0.087 ms

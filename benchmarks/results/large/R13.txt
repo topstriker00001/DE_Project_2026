@@ -1,0 +1,75 @@
+=== R13 run 1 ===
+Nested Loop Anti Join  (cost=1.28..488.85 rows=66 width=16) (actual time=1.021..239.570 rows=531.00 loops=1)
+  Buffers: shared hit=10350 read=2904
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.43..5.58 rows=66 width=16) (actual time=0.014..0.057 rows=531.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=5 read=4
+  ->  Nested Loop  (cost=0.85..7.31 rows=1 width=8) (actual time=0.451..0.451 rows=0.00 loops=531)
+        Buffers: shared hit=10345 read=2900
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.43..4.53 rows=6 width=20) (actual time=0.085..0.087 rows=5.13 loops=531)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 531
+              Buffers: shared hit=1714 read=635
+        ->  Index Scan using videos_pkey on videos v  (cost=0.42..0.46 rows=1 width=12) (actual time=0.071..0.071 rows=0.00 loops=2724)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 2724
+              Buffers: shared hit=8631 read=2265
+Planning:
+  Buffers: shared hit=592 read=7
+Planning Time: 1.441 ms
+Execution Time: 239.608 ms
+=== R13 run 2 ===
+Nested Loop Anti Join  (cost=1.28..488.85 rows=66 width=16) (actual time=0.040..7.842 rows=531.00 loops=1)
+  Buffers: shared hit=13254
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.43..5.58 rows=66 width=16) (actual time=0.010..0.031 rows=531.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=9
+  ->  Nested Loop  (cost=0.85..7.31 rows=1 width=8) (actual time=0.015..0.015 rows=0.00 loops=531)
+        Buffers: shared hit=13245
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.43..4.53 rows=6 width=20) (actual time=0.002..0.002 rows=5.13 loops=531)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 531
+              Buffers: shared hit=2349
+        ->  Index Scan using videos_pkey on videos v  (cost=0.42..0.46 rows=1 width=12) (actual time=0.002..0.002 rows=0.00 loops=2724)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 2724
+              Buffers: shared hit=10896
+Planning:
+  Buffers: shared hit=599
+Planning Time: 0.917 ms
+Execution Time: 7.880 ms
+=== R13 run 3 ===
+Nested Loop Anti Join  (cost=1.28..488.85 rows=66 width=16) (actual time=0.044..8.391 rows=531.00 loops=1)
+  Buffers: shared hit=13254
+  ->  Index Only Scan using idx_subscriptions_channel_subscribed on subscriptions s  (cost=0.43..5.58 rows=66 width=16) (actual time=0.011..0.036 rows=531.00 loops=1)
+        Index Cond: (channel_id = 217)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=9
+  ->  Nested Loop  (cost=0.85..7.31 rows=1 width=8) (actual time=0.016..0.016 rows=0.00 loops=531)
+        Buffers: shared hit=13245
+        ->  Index Only Scan using idx_watch_events_user_started on watch_events w  (cost=0.43..4.53 rows=6 width=20) (actual time=0.002..0.002 rows=5.13 loops=531)
+              Index Cond: (user_id = s.user_id)
+              Heap Fetches: 0
+              Index Searches: 531
+              Buffers: shared hit=2349
+        ->  Index Scan using videos_pkey on videos v  (cost=0.42..0.46 rows=1 width=12) (actual time=0.002..0.002 rows=0.00 loops=2724)
+              Index Cond: ((video_id)::text = (w.video_id)::text)
+              Filter: (channel_id = 217)
+              Rows Removed by Filter: 1
+              Index Searches: 2724
+              Buffers: shared hit=10896
+Planning:
+  Buffers: shared hit=599
+Planning Time: 0.956 ms
+Execution Time: 8.430 ms

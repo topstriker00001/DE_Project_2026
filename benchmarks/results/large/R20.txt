@@ -1,0 +1,63 @@
+=== R20 run 1 ===
+WindowAgg  (cost=30875.25..39956.73 rows=213683 width=68) (actual time=28.186..38.965 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((watch_events.started_at)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=6 read=1084, temp read=486 written=488
+  ->  GroupAggregate  (cost=30875.21..36751.49 rows=213683 width=36) (actual time=27.791..38.946 rows=30.00 loops=1)
+        Group Key: ((watch_events.started_at)::date)
+        Buffers: shared hit=6 read=1084, temp read=486 written=488
+        ->  Sort  (cost=30875.21..31409.41 rows=213683 width=8) (actual time=27.404..32.708 rows=219780.00 loops=1)
+              Sort Key: ((watch_events.started_at)::date)
+              Sort Method: external merge  Disk: 3888kB
+              Buffers: shared hit=6 read=1084, temp read=486 written=488
+              ->  Index Only Scan using idx_watch_events_started_at on watch_events  (cost=0.43..9036.30 rows=213683 width=8) (actual time=0.011..16.898 rows=219780.00 loops=1)
+                    Index Cond: ((started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=3 read=1084
+Planning:
+  Buffers: shared hit=203 read=4
+Planning Time: 0.391 ms
+Execution Time: 39.994 ms
+=== R20 run 2 ===
+WindowAgg  (cost=30875.25..39956.73 rows=213683 width=68) (actual time=25.391..36.746 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((watch_events.started_at)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=1090, temp read=486 written=488
+  ->  GroupAggregate  (cost=30875.21..36751.49 rows=213683 width=36) (actual time=24.955..36.729 rows=30.00 loops=1)
+        Group Key: ((watch_events.started_at)::date)
+        Buffers: shared hit=1090, temp read=486 written=488
+        ->  Sort  (cost=30875.21..31409.41 rows=213683 width=8) (actual time=24.508..30.195 rows=219780.00 loops=1)
+              Sort Key: ((watch_events.started_at)::date)
+              Sort Method: external merge  Disk: 3888kB
+              Buffers: shared hit=1090, temp read=486 written=488
+              ->  Index Only Scan using idx_watch_events_started_at on watch_events  (cost=0.43..9036.30 rows=213683 width=8) (actual time=0.006..14.765 rows=219780.00 loops=1)
+                    Index Cond: ((started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=1087
+Planning:
+  Buffers: shared hit=207
+Planning Time: 0.312 ms
+Execution Time: 37.749 ms
+=== R20 run 3 ===
+WindowAgg  (cost=30875.25..39956.73 rows=213683 width=68) (actual time=24.674..35.566 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((watch_events.started_at)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=1090, temp read=486 written=488
+  ->  GroupAggregate  (cost=30875.21..36751.49 rows=213683 width=36) (actual time=24.273..35.549 rows=30.00 loops=1)
+        Group Key: ((watch_events.started_at)::date)
+        Buffers: shared hit=1090, temp read=486 written=488
+        ->  Sort  (cost=30875.21..31409.41 rows=213683 width=8) (actual time=23.868..29.372 rows=219780.00 loops=1)
+              Sort Key: ((watch_events.started_at)::date)
+              Sort Method: external merge  Disk: 3888kB
+              Buffers: shared hit=1090, temp read=486 written=488
+              ->  Index Only Scan using idx_watch_events_started_at on watch_events  (cost=0.43..9036.30 rows=213683 width=8) (actual time=0.006..13.987 rows=219780.00 loops=1)
+                    Index Cond: ((started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=1087
+Planning:
+  Buffers: shared hit=207
+Planning Time: 0.331 ms
+Execution Time: 36.374 ms

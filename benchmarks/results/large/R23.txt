@@ -1,0 +1,63 @@
+=== R23 run 1 ===
+Sort  (cost=1124.84..1124.91 rows=25 width=56) (actual time=2.067..2.068 rows=25.00 loops=1)
+  Sort Key: c.created_at DESC
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=102 read=120
+  ->  Nested Loop  (cost=912.56..1124.26 rows=25 width=56) (actual time=2.038..2.058 rows=25.00 loops=1)
+        Buffers: shared hit=99 read=120
+        ->  Limit  (cost=912.13..912.89 rows=25 width=16) (actual time=1.846..1.852 rows=25.00 loops=1)
+              Buffers: shared hit=1 read=118
+              ->  Index Only Scan using idx_comments_created_desc on comments  (cost=0.43..36468.43 rows=1200000 width=16) (actual time=0.010..1.284 rows=30025.00 loops=1)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=1 read=118
+        ->  Index Scan using comments_pkey on comments c  (cost=0.43..8.45 rows=1 width=56) (actual time=0.008..0.008 rows=1.00 loops=25)
+              Index Cond: (comment_id = comments.comment_id)
+              Index Searches: 25
+              Buffers: shared hit=98 read=2
+Planning:
+  Buffers: shared hit=259 read=6
+Planning Time: 1.154 ms
+Execution Time: 2.087 ms
+=== R23 run 2 ===
+Sort  (cost=1124.84..1124.91 rows=25 width=56) (actual time=1.854..1.855 rows=25.00 loops=1)
+  Sort Key: c.created_at DESC
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=222
+  ->  Nested Loop  (cost=912.56..1124.26 rows=25 width=56) (actual time=1.827..1.844 rows=25.00 loops=1)
+        Buffers: shared hit=219
+        ->  Limit  (cost=912.13..912.89 rows=25 width=16) (actual time=1.821..1.826 rows=25.00 loops=1)
+              Buffers: shared hit=119
+              ->  Index Only Scan using idx_comments_created_desc on comments  (cost=0.43..36468.43 rows=1200000 width=16) (actual time=0.006..1.212 rows=30025.00 loops=1)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=119
+        ->  Index Scan using comments_pkey on comments c  (cost=0.43..8.45 rows=1 width=56) (actual time=0.001..0.001 rows=1.00 loops=25)
+              Index Cond: (comment_id = comments.comment_id)
+              Index Searches: 25
+              Buffers: shared hit=100
+Planning:
+  Buffers: shared hit=265
+Planning Time: 0.377 ms
+Execution Time: 1.875 ms
+=== R23 run 3 ===
+Sort  (cost=1124.84..1124.91 rows=25 width=56) (actual time=1.828..1.828 rows=25.00 loops=1)
+  Sort Key: c.created_at DESC
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=222
+  ->  Nested Loop  (cost=912.56..1124.26 rows=25 width=56) (actual time=1.805..1.820 rows=25.00 loops=1)
+        Buffers: shared hit=219
+        ->  Limit  (cost=912.13..912.89 rows=25 width=16) (actual time=1.800..1.804 rows=25.00 loops=1)
+              Buffers: shared hit=119
+              ->  Index Only Scan using idx_comments_created_desc on comments  (cost=0.43..36468.43 rows=1200000 width=16) (actual time=0.005..1.198 rows=30025.00 loops=1)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=119
+        ->  Index Scan using comments_pkey on comments c  (cost=0.43..8.45 rows=1 width=56) (actual time=0.000..0.000 rows=1.00 loops=25)
+              Index Cond: (comment_id = comments.comment_id)
+              Index Searches: 25
+              Buffers: shared hit=100
+Planning:
+  Buffers: shared hit=265
+Planning Time: 0.337 ms
+Execution Time: 1.845 ms

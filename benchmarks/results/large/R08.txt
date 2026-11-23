@@ -1,0 +1,54 @@
+=== R08 run 1 ===
+Sort  (cost=4.91..4.93 rows=5 width=49) (actual time=0.270..0.271 rows=1.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=6 read=3
+  ->  HashAggregate  (cost=4.78..4.85 rows=5 width=49) (actual time=0.236..0.237 rows=1.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=3 read=3
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.56..4.71 rows=9 width=13) (actual time=0.172..0.192 rows=7.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=3 read=3
+Planning:
+  Buffers: shared hit=192 read=1
+Planning Time: 1.884 ms
+Execution Time: 0.385 ms
+=== R08 run 2 ===
+Sort  (cost=4.91..4.93 rows=5 width=49) (actual time=0.285..0.286 rows=1.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=9
+  ->  HashAggregate  (cost=4.78..4.85 rows=5 width=49) (actual time=0.231..0.232 rows=1.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=6
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.56..4.71 rows=9 width=13) (actual time=0.168..0.179 rows=7.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=193
+Planning Time: 1.624 ms
+Execution Time: 0.421 ms
+=== R08 run 3 ===
+Sort  (cost=4.91..4.93 rows=5 width=49) (actual time=0.260..0.261 rows=1.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=9
+  ->  HashAggregate  (cost=4.78..4.85 rows=5 width=49) (actual time=0.218..0.219 rows=1.00 loops=1)
+        Group Key: traffic_source
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=6
+        ->  Index Only Scan using idx_watch_events_video_started on watch_events  (cost=0.56..4.71 rows=9 width=13) (actual time=0.161..0.171 rows=7.00 loops=1)
+              Index Cond: (video_id = 'ZkNSlUB1EOs'::text)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=193
+Planning Time: 1.454 ms
+Execution Time: 0.390 ms
